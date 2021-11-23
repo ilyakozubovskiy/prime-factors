@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PrimeFactorsTask
 {
@@ -21,7 +22,27 @@ namespace PrimeFactorsTask
         /// </example>
         public static int[] GetFactors(int number)
         {
-            throw new NotImplementedException("You need to implement this method.");
+            if (number <= 0)
+            {
+                throw new ArgumentException("Number less or equal 0");
+            }
+
+            int count = 2;
+            List<int> result = new List<int>();
+            while (number > 1)
+            { 
+                if (number % count == 0)
+                {
+                    result.Add(count);
+                    number /= count;
+                }
+                else
+                {
+                    count++;
+                }
+            }
+
+            return result.ToArray();
         }
     }
 }
